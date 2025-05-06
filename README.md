@@ -4,7 +4,7 @@
 </h1>
 
 <p align=center>
-<img src="https://i.imgur.com/QJzohM8.png" width="800px" alt="Image of the Discord Icon Replacer Graphical User Interface" loading="lazy" />
+<img src="https://i.imgur.com/QJzohM8.png" width="822px" alt="Image of the Discord Icon Replacer Graphical User Interface" loading="lazy" />
 </p>
 
 <a href="#brief"><p align="center">Brief</p></a>
@@ -20,13 +20,13 @@
 </p>
 
 ## Brief
-Discord Icon Replacer aka DIR is a tool to keep your shortcut and Discord app icons updated according to the icon of your preference made by **[dkitagawa](https://discord.com/users/737103505663328356/)**.
+Discord Icon Replacer aka DIR is a tool to keep your shortcut and Discord app icons updated according to the icon of your preference.
 
-# Technologies
+## Technologies
 - [**C#**](https://dotnet.microsoft.com/en-us/languages/csharp) - For the general backend development;
 <br /><br />
 
-# Contact
+## Contact
 ### **Learn more about me at:**
 - ⚡ [**LinkedIn**](https://linkedin.com/in/douglas-kitagawa/)
 - 📫 [**E-mail**](mailto:douglaskitagawa@proton.me)
