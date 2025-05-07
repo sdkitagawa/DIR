@@ -24,7 +24,7 @@
 
 <p align="center">
   <a href="#" title="Build Passing"><img src="https://img.shields.io/badge/build-passing-brightgreen" alt="An image of a half gray (left side) and green (right side) to indicate that the build of the application is passing"></a>
-  <a href="https://github.com/sdkitagawa/moogle_manager?tab=GPL-3.0-1-ov-file" title="LICENSE"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="An image of a half gray (left side) and half orange (right side) to indicate which license the project is under"></a>
+  <a href="https://github.com/sdkitagawa/DIR/tree/main?tab=GPL-3.0-1-ov-file" title="LICENSE"><img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg" alt="An image of a half gray (left side) and half orange (right side) to indicate which license the project is under"></a>
   <a href="https://www.javascript.com/" title="Go to JavaScript homepage"><img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt="An image containing the C Sharp logo, with a green background and white text written C Sharp"></a>
 </p>
 
