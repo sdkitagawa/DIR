@@ -34,8 +34,8 @@
 
 > [!WARNING]
 > 1 - Close all your Discord Apps before using the tool:
-
-2 - Pick an icon inside the `icons` folder for your Discord, Discord PTB and Discord Canary builds.
+>
+> 2 - Pick an icon inside the `icons` folder for your Discord, Discord PTB and Discord Canary builds.
 
 ## Technologies
 - [**C#**](https://dotnet.microsoft.com/en-us/languages/csharp) - For the general backend development;
