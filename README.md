@@ -4,14 +4,25 @@
 </h1>
 
 <p align=center>
-<img src="https://i.imgur.com/QJzohM8.png" width="822px" alt="Image of the Discord Icon Replacer Graphical User Interface" loading="lazy" />
+  <br>
+  <a href="README.md"><img width="20%" src="images/dir-logo.png"/></a>
+  <br />
+  <span>Replace Discord Icons Easily</span>
+  <br />
 </p>
 
-<a href="#brief"><p align="center">Brief</p></a>
-<a href="#contact"><p align="center">Contact</p></a>
-<a href="#license"><p align="center">License</p></a>
+<p align="center">
+  <a href="#general-usage">General usage</a>
+  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+  <a href="https://sherlockproject.xyz/usage">Usage</a>
+  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
+  <a href="#license">License</a>
+</p>
 
-<br /><br />
+<p align="center">
+<img width="822px" src="images/demo.png"/>
+</a>
+</p>
 
 <p align="center">
   <a href="#" title="Build Passing"><img src="https://img.shields.io/badge/build-passing-brightgreen" alt="An image of a half gray (left side) and green (right side) to indicate that the build of the application is passing"></a>
@@ -19,8 +30,12 @@
   <a href="https://www.javascript.com/" title="Go to JavaScript homepage"><img src="https://custom-icon-badges.demolab.com/badge/C%23-%23239120.svg?logo=cshrp&logoColor=white" alt="An image containing the C Sharp logo, with a green background and white text written C Sharp"></a>
 </p>
 
-## Brief
-Discord Icon Replacer aka DIR is a tool to keep your shortcut and Discord app icons updated according to the icon of your preference.
+## General usage
+
+> [!WARNING]
+> 1 - Close all your Discord Apps before using the tool:
+
+2 - Pick an icon inside the `icons` folder for your Discord, Discord PTB and Discord Canary builds.
 
 ## Technologies
 - [**C#**](https://dotnet.microsoft.com/en-us/languages/csharp) - For the general backend development;
@@ -34,5 +49,5 @@ Discord Icon Replacer aka DIR is a tool to keep your shortcut and Discord app ic
 - 📺 [**Youtube**](https://www.youtube.com/@dkitagawa)
 - 📺 [**Twitch**](https://www.twitch.tv/kitbitdots)
 
-# License
+## License
 Copyright © Douglas Kitagawa's (dkitagawa's) Development - Licensed under [GNU General Public License v3.0](./LICENSE.bib)
