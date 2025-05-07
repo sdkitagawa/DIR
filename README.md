@@ -14,8 +14,6 @@
 <p align="center">
   <a href="#general-usage">General usage</a>
   &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
-  <a href="https://sherlockproject.xyz/usage">Usage</a>
-  &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
   <a href="#license">License</a>
 </p>
 
