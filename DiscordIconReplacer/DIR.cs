@@ -94,6 +94,14 @@ namespace DiscordIconReplacer
             {
                 // Apply all icon replacements
                 facade.ApplyAll(baseIconFolder, requests);
+
+                // Update the Start Menu shortcut icons to point at the newly applied app.ico
+                var appDirectories = requests.Select(r => r.TargetDir).ToList();
+                var startMenuRoot = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "Microsoft", "Windows", "Start Menu");
+                var shortcutRequests = new StartMenuShortcutLocator().BuildRequests(startMenuRoot, appDirectories);
+                new ShortcutUpdateFacade(new ShortcutUpdater()).ApplyAll(shortcutRequests);
+
                 if (CheckBox_RestartExplorer.Checked)
                 {
                     _systemService.RestartExplorer();
