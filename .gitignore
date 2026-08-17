@@ -55,6 +55,7 @@ ipch/
 
 # Others
 sql/
+bin/
 *.Cache
 ClientBin/
 [Ss]tyle[Cc]op.*
@@ -63,7 +64,6 @@ ClientBin/
 *~
 *.dbmdl
 *.[Pp]ublish.xml
-
 *.publishsettings
 
 # =========================
