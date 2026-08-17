@@ -39,12 +39,5 @@
 - [**C#**](https://dotnet.microsoft.com/en-us/languages/csharp) - For the general backend development;
 <br /><br />
 
-## Contact
-### **Learn more about me at:**
-- 📫 [**E-mail**](mailto:sdkitagawa@gmail.com)
-- 👨🏻‍💻 [**Github**](https://github.com/sdkitagawa)
-- 📺 [**Youtube**](https://www.youtube.com/@dkitagawa)
-- 📺 [**Twitch**](https://www.twitch.tv/kitbitdots)
-
 ## License
 Copyright © Douglas Kitagawa's (dkitagawa's) Development - Licensed under [GNU General Public License v3.0](./LICENSE.bib)
