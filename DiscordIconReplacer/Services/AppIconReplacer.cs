@@ -1,31 +1,22 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-using DiscordIconReplacer.Services;
+﻿using System.IO;
+using DiscordIconReplacer.Constants;
 
-namespace DiscordIconReplacer.Services
+namespace DiscordIconReplacer.Services;
+
+public class AppIconReplacer : IIconReplacer
 {
-    public class AppIconReplacer : IIconReplacer
+    public void ReplaceAppIcon(string targetDir, string sourceIconPath)
     {
-        private static readonly Regex VersionFolderPattern = new Regex(@"^app-\d+(\.\d+)+$", RegexOptions.Compiled);
+        if (!Directory.Exists(targetDir))
+            return;
 
-        public void ReplaceAppIcon(string targetDir, string sourceIconPath)
+        var destinationPath = Path.Combine(targetDir, "app.ico");
+        File.Copy(sourceIconPath, destinationPath, overwrite: true);
+
+        foreach (var subDir in Directory.GetDirectories(targetDir))
         {
-            var destinationPath = Path.Combine(targetDir, "app.ico");
-            File.Copy(sourceIconPath, destinationPath, overwrite: true);
-
-            if (!Directory.Exists(targetDir))
-                return;
-
-            foreach (var subDir in Directory.GetDirectories(targetDir))
-            {
-                if (VersionFolderPattern.IsMatch(Path.GetFileName(subDir)))
-                    File.Copy(sourceIconPath, Path.Combine(subDir, "app.ico"), overwrite: true);
-            }
+            if (VersionPatterns.DiscordVersionFolder.IsMatch(Path.GetFileName(subDir)))
+                File.Copy(sourceIconPath, Path.Combine(subDir, "app.ico"), overwrite: true);
         }
     }
 }
