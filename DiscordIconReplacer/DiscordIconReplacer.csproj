@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <LangVersion>12.0</LangVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -56,7 +57,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
@@ -66,7 +67,7 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
@@ -76,7 +77,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
@@ -86,7 +87,7 @@
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>12.0</LangVersion>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
@@ -104,31 +105,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DIR.cs">
+    <Compile Include="IsExternalInit.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DIR.Designer.cs">
-      <DependentUpon>DIR.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Facades\AppIconReplaceFacade.cs" />
     <Compile Include="Facades\ShortcutUpdateFacade.cs" />
-    <Compile Include="Factories\ShortcutUpdateRequest.cs" />
-    <Compile Include="Factories\ShortcutUpdateRequestFactory.cs" />
+    <Compile Include="Constants\VersionPatterns.cs" />
     <Compile Include="Models\AppIconReplaceRequest.cs" />
+    <Compile Include="Models\ShortcutUpdateRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AppIconReplacer.cs" />
     <Compile Include="Services\FileDialogService.cs" />
     <Compile Include="Services\IFileDialogService.cs" />
     <Compile Include="Services\IIconReplacer.cs" />
-    <Compile Include="Services\IStartMenuShortcutLocator.cs" />
     <Compile Include="Services\IShortcutUpdater.cs" />
     <Compile Include="Services\ShortcutUpdater.cs" />
     <Compile Include="Services\StartMenuShortcutLocator.cs" />
-    <Compile Include="System\ISystemService.cs" />
-    <Compile Include="System\SystemService.cs" />
-    <EmbeddedResource Include="DIR.resx">
-      <DependentUpon>DIR.cs</DependentUpon>
+    <Compile Include="SystemServices\ISystemService.cs" />
+    <Compile Include="SystemServices\SystemService.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
