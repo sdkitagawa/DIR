@@ -1,30 +1,26 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DiscordIconReplacer.Models;
 using DiscordIconReplacer.Services;
 
-namespace DiscordIconReplacer.Facades
+namespace DiscordIconReplacer.Facades;
+
+public class AppIconReplaceFacade
 {
-    public class AppIconReplaceFacade
+    private readonly IIconReplacer _replacer;
+
+    public AppIconReplaceFacade(IIconReplacer replacer)
     {
-        private readonly IIconReplacer replacer;
+        _replacer = replacer;
+    }
 
-        public AppIconReplaceFacade(IIconReplacer replacer)
+    public void ApplyAll(string baseIconsFolder, List<AppIconReplaceRequest> requests)
+    {
+        foreach (var request in requests)
         {
-            this.replacer = replacer;
-        }
-
-        public void ApplyAll(string baseIconsFolder, List<AppIconReplaceRequest> requests)
-        {
-            foreach (var request in requests)
-            {
-                var iconPath = Path.Combine(baseIconsFolder, request.IconName);
-                replacer.ReplaceAppIcon(request.TargetDir, iconPath);
-            }
+            var iconPath = Path.Combine(baseIconsFolder, request.IconName);
+            _replacer.ReplaceAppIcon(request.TargetDir, iconPath);
         }
     }
 }
