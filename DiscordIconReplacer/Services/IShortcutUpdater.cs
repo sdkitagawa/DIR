@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DiscordIconReplacer.Services;
 
-namespace DiscordIconReplacer.Services
+public interface IShortcutUpdater
 {
-    public interface IShortcutUpdater
-    {
-        void UpdateIcon(string shortcutPath, string iconPath);
-    }
+    void UpdateIcon(string shortcutPath, string iconPath);
 }
