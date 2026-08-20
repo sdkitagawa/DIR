@@ -3,22 +3,21 @@ using System.IO;
 using System.Runtime.InteropServices;
 using IWsh = IWshRuntimeLibrary;
 
-namespace DiscordIconReplacer.Services
+namespace DiscordIconReplacer.Services;
+
+public class ShortcutUpdater : IShortcutUpdater
 {
-    public class ShortcutUpdater : IShortcutUpdater
+    public void UpdateIcon(string shortcutPath, string iconPath)
     {
-        public void UpdateIcon(string shortcutPath, string iconPath)
-        {
-            if (!File.Exists(shortcutPath) || !string.Equals(Path.GetExtension(shortcutPath), ".lnk", StringComparison.OrdinalIgnoreCase))
-                return;
+        if (!File.Exists(shortcutPath) || !string.Equals(Path.GetExtension(shortcutPath), ".lnk", StringComparison.OrdinalIgnoreCase))
+            return;
 
-            var shell = new IWsh.WshShell();
-            var shortcut = (IWsh.IWshShortcut)shell.CreateShortcut(shortcutPath);
-            shortcut.IconLocation = $"{iconPath}, 0";
-            shortcut.Save();
+        var shell = new IWsh.WshShell();
+        var shortcut = (IWsh.IWshShortcut)shell.CreateShortcut(shortcutPath);
+        shortcut.IconLocation = $"{iconPath}, 0";
+        shortcut.Save();
 
-            Marshal.FinalReleaseComObject(shortcut);
-            Marshal.FinalReleaseComObject(shell);
-        }
+        Marshal.FinalReleaseComObject(shortcut);
+        Marshal.FinalReleaseComObject(shell);
     }
 }
