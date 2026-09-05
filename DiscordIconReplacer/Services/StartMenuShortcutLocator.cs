@@ -23,6 +23,9 @@ public class StartMenuShortcutLocator
             if (string.IsNullOrWhiteSpace(appDirectory))
                 continue;
 
+            if (!Directory.Exists(appDirectory))
+                continue;
+
             var shortcutName = GetShortcutFileName(appDirectory);
             if (shortcutName == null)
                 continue;
@@ -50,18 +53,27 @@ public class StartMenuShortcutLocator
         return null;
     }
 
-    private static string GetAppIconPath(string appDirectory)
+    internal static string GetAppIconPath(string appDirectory)
     {
-        var versionFolder = Directory.GetDirectories(appDirectory)
-            .Select(Path.GetFileName)
-            .Where(n => VersionPatterns.DiscordVersionFolder.IsMatch(n))
-            .Select(n => new { Version = ParseVersion(n), Folder = Path.Combine(appDirectory, n) })
-            .Where(x => x.Version != null && File.Exists(Path.Combine(x.Folder, "app.ico")))
-            .OrderByDescending(x => x.Version)
-            .FirstOrDefault();
+        if (string.IsNullOrWhiteSpace(appDirectory) || !Directory.Exists(appDirectory))
+            return Path.Combine(appDirectory ?? string.Empty, "app.ico");
 
-        if (versionFolder != null)
-            return Path.Combine(versionFolder.Folder, "app.ico");
+        try
+        {
+            var versionFolder = Directory.GetDirectories(appDirectory)
+                .Select(Path.GetFileName)
+                .Where(n => VersionPatterns.DiscordVersionFolder.IsMatch(n))
+                .Select(n => new { Version = ParseVersion(n), Folder = Path.Combine(appDirectory, n) })
+                .Where(x => x.Version != null && File.Exists(Path.Combine(x.Folder, "app.ico")))
+                .OrderByDescending(x => x.Version)
+                .FirstOrDefault();
+
+            if (versionFolder != null)
+                return Path.Combine(versionFolder.Folder, "app.ico");
+        }
+        catch (UnauthorizedAccessException)
+        {
+        }
 
         return Path.Combine(appDirectory, "app.ico");
     }
@@ -117,14 +129,14 @@ public class StartMenuShortcutLocator
 
     private static bool IsShortcutForApp(string shortcutPath, string appDirectory)
     {
+        if (string.IsNullOrWhiteSpace(shortcutPath))
+            return false;
+
+        var shell = new IWsh.WshShell();
+        var shortcut = (IWsh.IWshShortcut)shell.CreateShortcut(shortcutPath);
         try
         {
-            var shell = new IWsh.WshShell();
-            var shortcut = (IWsh.IWshShortcut)shell.CreateShortcut(shortcutPath);
             var target = shortcut.TargetPath;
-
-            Marshal.FinalReleaseComObject(shortcut);
-            Marshal.FinalReleaseComObject(shell);
 
             return !string.IsNullOrEmpty(target) &&
                 target.StartsWith(appDirectory, StringComparison.OrdinalIgnoreCase);
@@ -132,6 +144,11 @@ public class StartMenuShortcutLocator
         catch
         {
             return false;
+        }
+        finally
+        {
+            Marshal.FinalReleaseComObject(shortcut);
+            Marshal.FinalReleaseComObject(shell);
         }
     }
 }
