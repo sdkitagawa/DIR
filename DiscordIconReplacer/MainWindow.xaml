@@ -1,0 +1,130 @@
+<Window x:Class="DiscordIconReplacer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:DiscordIconReplacer.Controls"
+        Title="DIR"
+        Width="1400"
+        MinWidth="1100" MinHeight="520"
+        FontFamily="{DynamicResource AppFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        SizeToContent="Height"
+        Background="{DynamicResource WindowBackground}"
+        UseLayoutRounding="True"
+        TextOptions.TextFormattingMode="Display">
+    <Border BorderBrush="{DynamicResource TitlebarBorder}"
+            BorderThickness="1"
+            Background="{x:Null}">
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:TitleBar/>
+
+        <ScrollViewer x:Name="ContentScroller" Grid.Row="1"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="28,18,28,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Brand header -->
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                    <Image x:Name="BrandIcon" Width="56" Height="56"
+                           Stretch="Uniform" SnapsToDevicePixels="True">
+                        <Image.Clip>
+                            <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,56,56"/>
+                        </Image.Clip>
+                    </Image>
+                    <StackPanel VerticalAlignment="Center" Margin="18,0,0,0">
+                        <TextBlock Text="DIR"
+                                   FontSize="24" FontWeight="Bold"
+                                   Foreground="{DynamicResource TextPrimary}"
+                                   TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="Select Discord installation folders and icon files for different versions."
+                                   FontSize="13" Margin="0,6,0,0"
+                                   Foreground="{DynamicResource TextSecondary}"
+                                   TextWrapping="Wrap"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Directory card -->
+                <Border Grid.Row="1" CornerRadius="12" Padding="14,6"
+                        Background="{DynamicResource CardGradient}"
+                        BorderBrush="{DynamicResource CardBorder}"
+                        BorderThickness="1"
+                        SnapsToDevicePixels="True">
+                    <StackPanel x:Name="RowsPanel"/>
+                </Border>
+
+                <!-- Cache card -->
+                <Border Grid.Row="2" Margin="0,12,0,0" CornerRadius="12"
+                        Background="{DynamicResource CardGradient}"
+                        BorderBrush="{DynamicResource CardBorder}"
+                        BorderThickness="1"
+                        SnapsToDevicePixels="True">
+                    <StackPanel Orientation="Horizontal" Margin="24,0,24,0">
+                        <Grid Width="39" Height="39" Margin="0,20,18,20" Cursor="Hand">
+                            <Border x:Name="CacheBoxUnchecked" CornerRadius="8"
+                                    Background="{DynamicResource CheckboxUnchecked}"
+                                    BorderBrush="{DynamicResource CheckboxBorder}"
+                                    BorderThickness="1"/>
+                            <Border x:Name="CacheBoxChecked" CornerRadius="8" Opacity="0"
+                                    Background="{DynamicResource CheckboxChecked}"
+                                    BorderBrush="{DynamicResource CheckboxBorder}"
+                                    BorderThickness="1">
+                                <TextBlock Text="&#10003;" FontSize="22" FontWeight="Bold"
+                                           Foreground="White"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                            <ToggleButton x:Name="CacheToggle" IsChecked="True"
+                                          Opacity="0" ClickMode="Release"
+                                          Checked="CacheToggle_Changed"
+                                          Unchecked="CacheToggle_Changed"/>
+                        </Grid>
+                        <TextBlock Text="Start Menu Cache" FontSize="17" FontWeight="SemiBold"
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource TextPrimary}"/>
+                        <TextBlock Text="Restart Explorer after applying icons"
+                                   VerticalAlignment="Center" Margin="26,0,0,0"
+                                   FontSize="13" Foreground="{DynamicResource TextSecondary}"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Footer -->
+        <Grid Grid.Row="2" Margin="28,20,28,40">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="ApplyButton" Grid.Column="0" Margin="0,0,6,0"
+                    Content="Apply Icons"
+                    Style="{StaticResource FooterSecondaryButtonStyle}"
+                    Click="ApplyButton_Click"/>
+
+            <Button x:Name="SaveButton" Grid.Column="1" Margin="3,0,3,0"
+                    Content="Save Discord Directories"
+                    Style="{StaticResource FooterSecondaryButtonStyle}"
+                    Click="SaveButton_Click"/>
+
+            <Button x:Name="CloseButton" Grid.Column="2" Margin="6,0,0,0"
+                    Content="Close"
+                    Style="{StaticResource FooterPrimaryButtonStyle}"
+                    Click="CloseButton_Click"/>
+        </Grid>
+
+        <controls:ToastNotification x:Name="Toast" Grid.Row="0" Grid.RowSpan="3"/>
+        </Grid>
+    </Border>
+</Window>
