@@ -106,5 +106,17 @@ namespace DiscordIconReplacer.Properties {
                 this["RestartExplorerAfterApply"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SelectedSkin {
+            get {
+                return ((string)(this["SelectedSkin"]));
+            }
+            set {
+                this["SelectedSkin"] = value;
+            }
+        }
     }
 }
