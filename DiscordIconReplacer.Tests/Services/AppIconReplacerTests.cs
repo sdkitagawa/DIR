@@ -96,6 +96,66 @@ public class AppIconReplacerTests : IDisposable
         File.ReadAllText(destPath).Should().NotBe("old content");
     }
 
+    [Fact]
+    public void ReplaceAppIcon_NonexistentSourceIcon_DoesNotCreateFiles()
+    {
+        var missingIcon = Path.Combine(_testDirectory, "missing.ico");
+
+        _replacer.ReplaceAppIcon(_testDirectory, missingIcon);
+
+        File.Exists(Path.Combine(_testDirectory, "app.ico")).Should().BeFalse();
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void ReplaceAppIcon_BlankTargetDir_DoesNotThrow(string targetDir)
+    {
+        var iconPath = CreateTestIcon("source.ico");
+
+        var act = () => _replacer.ReplaceAppIcon(targetDir, iconPath);
+
+        act.Should().NotThrow();
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData("   ")]
+    public void ReplaceAppIcon_BlankSourceIcon_DoesNotCreateFiles(string sourceIcon)
+    {
+        _replacer.ReplaceAppIcon(_testDirectory, sourceIcon);
+
+        File.Exists(Path.Combine(_testDirectory, "app.ico")).Should().BeFalse();
+    }
+
+    [Fact]
+    public void ReplaceAppIcon_SourceIconIsDirectory_DoesNotCreateFiles()
+    {
+        var dirAsIcon = Path.Combine(_testDirectory, "not-an-icon");
+        Directory.CreateDirectory(dirAsIcon);
+
+        _replacer.ReplaceAppIcon(_testDirectory, dirAsIcon);
+
+        File.Exists(Path.Combine(_testDirectory, "app.ico")).Should().BeFalse();
+    }
+
+    [Fact]
+    public void ReplaceAppIcon_NonNumericSubfolder_DoesNotMatchVersionPattern()
+    {
+        var withDigits = Path.Combine(_testDirectory, "app-1.0.0");
+        var noDigits = Path.Combine(_testDirectory, "app-folder");
+        Directory.CreateDirectory(withDigits);
+        Directory.CreateDirectory(noDigits);
+        var iconPath = CreateTestIcon("source.ico");
+
+        _replacer.ReplaceAppIcon(_testDirectory, iconPath);
+
+        File.Exists(Path.Combine(withDigits, "app.ico")).Should().BeTrue();
+        File.Exists(Path.Combine(noDigits, "app.ico")).Should().BeFalse();
+    }
+
     private string CreateTestIcon(string fileName)
     {
         var path = Path.Combine(_testDirectory, fileName);
