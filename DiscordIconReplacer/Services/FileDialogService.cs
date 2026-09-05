@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace DiscordIconReplacer.Services;
 
@@ -6,14 +7,14 @@ public class FileDialogService : IFileDialogService
 {
     public string ShowFileDialog(string fileType, string extension)
     {
-        using (var dialog = new OpenFileDialog
+        var dialog = new Microsoft.Win32.OpenFileDialog
         {
-            Filter = $"{fileType} (*.{extension})| *.{extension}",
-            Title = $"Select {fileType}"
-        })
-        {
-            return dialog.ShowDialog() == DialogResult.OK ? dialog.FileName : null;
-        }
+            Filter = DialogFilter.Build(fileType, extension),
+            Title = $"Select {fileType}",
+            CheckFileExists = true
+        };
+
+        return dialog.ShowDialog() == true ? dialog.FileName : null;
     }
 
     public string ShowFolderDialog(string title, string currentPath)
@@ -21,7 +22,8 @@ public class FileDialogService : IFileDialogService
         using (var folderDialog = new FolderBrowserDialog())
         {
             folderDialog.Description = title;
-            folderDialog.SelectedPath = currentPath;
+            if (!string.IsNullOrEmpty(currentPath))
+                folderDialog.SelectedPath = currentPath;
             return folderDialog.ShowDialog() == DialogResult.OK ? folderDialog.SelectedPath : null;
         }
     }
