@@ -56,4 +56,43 @@ public class AppIconReplaceFacadeTests
 
         _replacerMock.Verify(r => r.ReplaceAppIcon("/path/discord", Path.Combine("/icons", "icon.ico")), Times.Once);
     }
+
+    [Fact]
+    public void ApplyAll_NullRequests_DoesNotThrowAndDoesNotCallReplacer()
+    {
+        _facade.ApplyAll("/icons", null);
+
+        _replacerMock.Verify(r => r.ReplaceAppIcon(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+    }
+
+    [Fact]
+    public void ApplyAll_NullEntryInList_SkipsItAndContinues()
+    {
+        var requests = new System.Collections.Generic.List<AppIconReplaceRequest>
+        {
+            null,
+            new("/path/discord", "icon.ico")
+        };
+
+        _facade.ApplyAll("/icons", requests);
+
+        _replacerMock.Verify(r => r.ReplaceAppIcon("/path/discord", Path.Combine("/icons", "icon.ico")), Times.Once);
+    }
+
+    [Fact]
+    public void ApplyAll_ReplacerThrows_ContinuesWithRemainingRequests()
+    {
+        _replacerMock.Setup(r => r.ReplaceAppIcon("/path/bad", It.IsAny<string>()))
+            .Throws<System.Exception>();
+
+        var requests = new System.Collections.Generic.List<AppIconReplaceRequest>
+        {
+            new("/path/bad", "bad.ico"),
+            new("/path/good", "good.ico")
+        };
+
+        _facade.ApplyAll("/icons", requests);
+
+        _replacerMock.Verify(r => r.ReplaceAppIcon("/path/good", Path.Combine("/icons", "good.ico")), Times.Once);
+    }
 }
