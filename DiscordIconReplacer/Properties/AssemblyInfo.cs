@@ -29,5 +29,7 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.8.3.32")]
-[assembly: AssemblyFileVersion("1.8.3.32")]
+[assembly: AssemblyVersion("1.8.4.1")]
+[assembly: AssemblyFileVersion("1.8.4.1")]
+
+[assembly: InternalsVisibleTo("DiscordIconReplacer.Tests")]
