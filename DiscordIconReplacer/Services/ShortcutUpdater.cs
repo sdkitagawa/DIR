@@ -9,15 +9,29 @@ public class ShortcutUpdater : IShortcutUpdater
 {
     public void UpdateIcon(string shortcutPath, string iconPath)
     {
-        if (!File.Exists(shortcutPath) || !string.Equals(Path.GetExtension(shortcutPath), ".lnk", StringComparison.OrdinalIgnoreCase))
+        if (string.IsNullOrWhiteSpace(shortcutPath))
+            return;
+
+        if (string.IsNullOrWhiteSpace(iconPath))
+            return;
+
+        if (!File.Exists(shortcutPath))
+            return;
+
+        if (!string.Equals(Path.GetExtension(shortcutPath), ".lnk", StringComparison.OrdinalIgnoreCase))
             return;
 
         var shell = new IWsh.WshShell();
         var shortcut = (IWsh.IWshShortcut)shell.CreateShortcut(shortcutPath);
-        shortcut.IconLocation = $"{iconPath}, 0";
-        shortcut.Save();
-
-        Marshal.FinalReleaseComObject(shortcut);
-        Marshal.FinalReleaseComObject(shell);
+        try
+        {
+            shortcut.IconLocation = $"{iconPath}, 0";
+            shortcut.Save();
+        }
+        finally
+        {
+            Marshal.FinalReleaseComObject(shortcut);
+            Marshal.FinalReleaseComObject(shell);
+        }
     }
 }
