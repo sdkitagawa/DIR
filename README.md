@@ -190,4 +190,4 @@ See the [releases](https://github.com/sdkitagawa/DIR/releases) page for the full
 
 ## License
 
-Copyright &copy; Douglas Kitagawa's (dkitagawa's) Development — Licensed under the [DK's Restricted Public License v1.2 (DRPL)](./LICENSE)
+Copyright &copy; Douglas Kitagawa's (dkitagawa's) Development - Licensed under the [DK's Restricted Public License v1.2 (DRPL)](./LICENSE)
