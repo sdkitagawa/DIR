@@ -17,10 +17,23 @@ public class AppIconReplaceFacade
 
     public void ApplyAll(string baseIconsFolder, List<AppIconReplaceRequest> requests)
     {
+        if (requests == null || requests.Count == 0)
+            return;
+
         foreach (var request in requests)
         {
-            var iconPath = Path.Combine(baseIconsFolder, request.IconName);
-            _replacer.ReplaceAppIcon(request.TargetDir, iconPath);
+            if (request == null)
+                continue;
+
+            try
+            {
+                var iconPath = Path.Combine(baseIconsFolder, request.IconName);
+                _replacer.ReplaceAppIcon(request.TargetDir, iconPath);
+            }
+            catch (System.Exception ex)
+            {
+                Debug.WriteLine($"Failed to replace icon for '{request.TargetDir}': {ex.Message}");
+            }
         }
     }
 }
