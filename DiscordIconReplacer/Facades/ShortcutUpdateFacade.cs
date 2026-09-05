@@ -16,8 +16,14 @@ public class ShortcutUpdateFacade
 
     public void ApplyAll(List<ShortcutUpdateRequest> requests)
     {
+        if (requests == null || requests.Count == 0)
+            return;
+
         foreach (var request in requests)
         {
+            if (request == null)
+                continue;
+
             try
             {
                 _updater.UpdateIcon(request.ShortcutPath, request.IconPath);
