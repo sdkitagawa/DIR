@@ -1,0 +1,89 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Background -->
+    <LinearGradientBrush x:Key="WindowBackground" StartPoint="0,1" EndPoint="1,0">
+        <GradientStop Color="#111D42" Offset="0"/>
+        <GradientStop Color="#090F28" Offset="1"/>
+    </LinearGradientBrush>
+
+    <!-- Titlebar -->
+    <LinearGradientBrush x:Key="TitlebarGradient" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#1A1F2E" Offset="0"/>
+        <GradientStop Color="#13171F" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="TitlebarBorder" Color="#2A2E36"/>
+
+    <!-- Cards -->
+    <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="#181C23" Offset="0"/>
+        <GradientStop Color="#14181E" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="CardBorder" Color="#2A2E36"/>
+    <SolidColorBrush x:Key="RowDivider" Color="#252A34"/>
+
+    <!-- Directory Row Icons -->
+    <SolidColorBrush x:Key="IconBackground" Color="#23272E"/>
+    <SolidColorBrush x:Key="IconBorder" Color="#2A2E36"/>
+    <SolidColorBrush x:Key="FolderIconColor" Color="#7C8CFF"/>
+    <SolidColorBrush x:Key="TagIconColor" Color="#7C8CFF"/>
+    <SolidColorBrush x:Key="PtbIconColor" Color="#7584FF"/>
+    <SolidColorBrush x:Key="CanaryIconColor" Color="#FFAD42"/>
+
+    <!-- Inputs -->
+    <SolidColorBrush x:Key="InputBackground" Color="#101318"/>
+    <SolidColorBrush x:Key="InputBorder" Color="#292E38"/>
+    <SolidColorBrush x:Key="InputBorderFocus" Color="#5865F2"/>
+    <CornerRadius x:Key="InputCornerRadius">7</CornerRadius>
+
+    <!-- Browse Button -->
+    <SolidColorBrush x:Key="BrowseButtonBackground" Color="#151A22"/>
+    <SolidColorBrush x:Key="BrowseButtonBorder" Color="#5865F2"/>
+    <SolidColorBrush x:Key="BrowseButtonHover" Color="#202741"/>
+
+    <!-- Accent -->
+    <SolidColorBrush x:Key="AccentBrush" Color="#5865F2"/>
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="#4752C4"/>
+
+    <!-- Checkbox -->
+    <SolidColorBrush x:Key="CheckboxChecked" Color="#5865F2"/>
+    <SolidColorBrush x:Key="CheckboxUnchecked" Color="#30343B"/>
+    <SolidColorBrush x:Key="CheckboxBorder" Color="#5865F2"/>
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="TextPrimary" Color="#F2F3F5"/>
+    <SolidColorBrush x:Key="TextSecondary" Color="#B5BAC1"/>
+    <SolidColorBrush x:Key="TextMuted" Color="#80848E"/>
+
+    <!-- Buttons -->
+    <SolidColorBrush x:Key="PrimaryButtonBackground" Color="#5865F2"/>
+    <SolidColorBrush x:Key="PrimaryButtonHover" Color="#4752C4"/>
+    <SolidColorBrush x:Key="PrimaryButtonBorder" Color="#5865F2"/>
+    <SolidColorBrush x:Key="SecondaryButtonBackground" Color="Transparent"/>
+    <SolidColorBrush x:Key="SecondaryButtonBorder" Color="#5865F2"/>
+    <SolidColorBrush x:Key="SecondaryButtonHover" Color="#5865F233"/>
+
+    <!-- Toast -->
+    <SolidColorBrush x:Key="ToastBackground" Color="#11151B"/>
+    <SolidColorBrush x:Key="ToastBorder" Color="#343A45"/>
+
+    <!-- Window Traffic Lights -->
+    <SolidColorBrush x:Key="TrafficLightRed" Color="#E34B45"/>
+    <SolidColorBrush x:Key="TrafficLightYellow" Color="#E4B93D"/>
+    <SolidColorBrush x:Key="TrafficLightGreen" Color="#43C45B"/>
+
+    <!-- Window Controls -->
+    <SolidColorBrush x:Key="WindowControlForeground" Color="#CCCCCC"/>
+    <SolidColorBrush x:Key="WindowControlHover" Color="#3B3F45"/>
+    <SolidColorBrush x:Key="WindowControlPressed" Color="#2E3238"/>
+    <SolidColorBrush x:Key="WindowCloseHover" Color="#ED4245"/>
+    <SolidColorBrush x:Key="WindowClosePressed" Color="#C9303A"/>
+
+    <!-- Skin Selector -->
+    <SolidColorBrush x:Key="SkinSelectorBackground" Color="#1A1F2E"/>
+    <SolidColorBrush x:Key="SkinSelectorBorder" Color="#2A2E36"/>
+
+    <!-- Font -->
+    <FontFamily x:Key="AppFont">Gill Sans MT</FontFamily>
+
+</ResourceDictionary>
