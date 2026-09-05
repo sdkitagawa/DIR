@@ -59,4 +59,26 @@ public class ShortcutUpdateFacadeTests
 
         _updaterMock.Verify(u => u.UpdateIcon(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
     }
+
+    [Fact]
+    public void ApplyAll_NullRequests_DoesNotThrowAndDoesNotCallUpdater()
+    {
+        _facade.ApplyAll(null);
+
+        _updaterMock.Verify(u => u.UpdateIcon(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
+    }
+
+    [Fact]
+    public void ApplyAll_NullEntryInList_SkipsItAndContinues()
+    {
+        var requests = new System.Collections.Generic.List<ShortcutUpdateRequest>
+        {
+            null,
+            new("/shortcuts/discord.lnk", "/icons/app.ico")
+        };
+
+        _facade.ApplyAll(requests);
+
+        _updaterMock.Verify(u => u.UpdateIcon("/shortcuts/discord.lnk", "/icons/app.ico"), Times.Once);
+    }
 }
