@@ -2,6 +2,7 @@
 *.suo
 *.user
 *.sln.docstates
+.vs/
 
 # Build results
 [Dd]ebug/
@@ -32,11 +33,13 @@ x64/
 *.tmp
 *.tmp_proj
 *.log
+!Folder Structure.log
+!Version.log
+!Solution Code Backup.log
 *.vspscc
 *.vssscc
 .builds
 *.pidb
-*.log
 *.svclog
 *.scc
 
